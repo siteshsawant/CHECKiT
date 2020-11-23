@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+<title>W3.CSS</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+<style>
+body{
+height:100%;
+width:100%;
+}
+.t {
+  color:red;
+  background-color:black;
+}
+#title{
+padding-left:100px;
+font-size:75px;
+}
+.content {
+  padding: 5px;
+  height:100%;
+  }
+</style>
+<body>
+<script>
+var query = location.search.substring(1);
+    var a = query.split("&&&"); 
+    var url = a[0];
+    var status = a[1];
+   	var button = document.createElement("button")
+document.getElementById('url').textContent =url;
+document.getElementById('status').textContent =status;
+button.innerText = "Proceed To URl Anyways-->"
+button['id'] = 'inserted'
+button['data-name'] = 'name1'
+button.onclick = function() {
+var newURL=url;
+chrome.tabs.create({ url: newURL });
+}
+
+document.body.appendChild(button)
+</script>
+<div class="content t">
+<p><img src="128.png" alt="CHECKiT"><span id="title">CHECKiT</span></p>
+</div>
+<div class="w3-container">
+<div class="w3-green w3-hover-shadow w3-padding-64 w3-center" style="width:100%">
+	<h2>This Page <h3 id="url"></h3> is <h1 id="status"></h1>To Use</h2>
+    <h2>This WebPage is blocked by CHECKiT!</h2>
+  </div>
+</div>
+
+</body>
+</html>

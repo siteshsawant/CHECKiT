@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+<style>
+* {
+  box-sizing: border-box;
+}
+#title{
+padding-left:100px;
+font-size:75px;
+}
+
+body {
+  background-image: url("bg.jpg");
+  padding: 20px;
+  font-family: Arial;
+  width: 750px;
+  height:500px;
+}
+
+div {
+  margin-bottom: 15px;
+ }
+.a {
+  background-color: rgb(255, 221, 221);
+  border-left: 6px solid #f44336;
+  color: black;
+}
+
+.b {
+  background-color: #ddffdd;
+  border-left: 6px solid #4CAF50;
+}
+
+.c {
+  background-color: #e7f3fe;
+  border-left: 6px solid #2196F3;
+}
+
+
+.d {
+  background-color: #ffffcc;
+  border-left: 6px solid #ffeb3b;
+}
+
+.m {
+  background-color: white;
+  border-left: 6px solid #ffeb3b;
+  border-right: 6px solid #ffeb3b;
+}
+.t {
+  color:white
+}
+
+
+/* Center website */
+.main {
+  max-width: 100%;
+  margin: auto;
+}
+
+h1 {
+  font-size: 50px;
+  word-break: break-all;
+}
+
+.row {
+  margin: 8px -16px;
+  height:575px;
+}
+
+/* Add padding BETWEEN each column */
+.row,
+.row > .column {
+  padding: 8px;
+}
+
+/* Create four equal columns that floats next to each other */
+.column {
+  float: left;
+  width: 50%;
+  height: 100px;
+  clear:right;
+}
+
+/* Clear floats after rows */ 
+.row:after {
+  content: "";
+  display: table;
+  clear: both;
+}
+
+/* Content */
+.content {
+  padding: 5px;
+  height:100%;
+  }
+.content2{
+height:375px;
+padding: 5px;
+color:white;
+border:solid 2px;
+}
+h3{color:white;
+border:solid 2px;
+text-align:center;}
+</style>
+</head>
+<body>
+
+<!-- MAIN (Center website) -->
+<div class="main">
+<script src="popup.js"></script>
+<script src="p5.js"></script>
+<script src="p5.min.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+<!-- Title -->
+<div class="content t">
+<p><img src="128.png" alt="CHECKiT"><span id="title">CHECKiT</span></p>
+</div>
+
+<!-- Home Part -->
+<div class="content2">
+<h4 align="center"><strong>Verifing URL - </strong><span id="url1"></span>  <i class="fa fa-spinner w3-spin" style="font-size:20px"></i></h4>
+<div class="w3-containerss">
+  <p align="center"><strong>Fetching URL Details ....  </strong>  <i class="fa fa-spinner w3-spin" style="font-size:20px"></i></p>
+  <p align="center"><strong>Checking Contents ....  </strong>  <i class="fa fa-spinner w3-spin" style="font-size:20px"></i></p>
+  <p align="center"><strong>Fetching Domain Details ....  </strong>  <i class="fa fa-spinner w3-spin" style="font-size:20px"></i></p>
+  
+</div> 
+<h3><a href="#S"><strong>CLICK HERE TO VIEW RESULT ....  </strong></a></h3>
+  <br>
+   <p align="center"><strong>*** Results Will Be More Accurate if You Click On Extension After the page Fully Loaded ***</strong></p> 
+</div>
+<div class="row" id="S"><h3>STATUS</h3>
+    <h3>This Webpage is "<strong><h4 id="status"></h4></strong>" to use</h3>
+	<div style="color:white;">
+	<h4>URL Status     : <span id="URL_status"></span></h4>
+	<h4>Content Status : <span id="CONTENT_status"></span></h4>
+	<p id="status_log"></p>
+	</div>
+    <h3><a href="#U"><strong> --> URL Details --> </strong></a></h3>
+	<h3><a href="#C"><strong> --> Content Details --> </strong></a></h3>
+</div>
+
+<div class="row" id="U">
+<h3><a href="#S"><strong> --> RESULT --> </strong></a></h3>
+<h3>URL DETAILS</h3>
+<div class="column">
+<div class="content a">
+<p><strong>HOSTNAME!</strong> <p id="host"></p> </p>  
+</div>
+</div>
+<div class="column">
+<div class="content b">
+<p><strong>PROTOCOL!</strong> <p id="protocol"></p> </p>
+</div>
+</div>
+<div class="column">
+<div class="content c">
+<p><strong>PATHNAME!</strong> <p id="pathname"></p> </p>
+</div>
+</div>
+<div class="column">
+<div class="content c">
+<p><strong>Search!</strong> <p id="search"></p> </p>
+</div>
+</div><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+<h3><a href="#C"><strong> --> Content Details --> </strong></a></h3>
+</div>
+
+<div class="row" id="C">
+<h3><a href="#S"><strong> --> RESULT --> </strong></a></h3>
+<h3><a href="#U"><strong> --> URL Details --> </strong></a></h3>
+<h3>CONTENT DETAILS</h3>
+<div class="column">
+<div class="content d">
+<p><strong>TOTAL ELEMENTS!</strong> <p id="total"></p> </p>
+</div>
+</div>
+<div class="column">
+<div class="content a">
+<p><strong>iFrames!</strong> <p id="iframes"></p> </p>
+</div>
+</div>
+<div class="column">
+<div class="content b">
+<p><strong>Anchor Tags!</strong> <p id="anch"></p> </p>
+</div>
+</div>
+<div class="column">
+<div class="content c">
+<p><strong>Meta Tags!</strong> <p id="meta"></p> </p>
+</div>
+</div>
+<div class="column">
+<div class="content d">
+<p><strong>Scripts!</strong> <p id="script"></p> </p>
+</div>
+</div>
+<div class="column">
+<div class="content a">
+<p><strong>Links!</strong> <p id="links"></p> </p>
+</div>
+</div>
+<br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+</div>
+
+<!--<div class="row"  id="D">
+<h3><a href="#S"><strong>  RESULT </strong></a></h3>
+<h3><a href="#U"><strong>  URL Details</strong></a></h3>
+<h3><a href="#C"><strong> Content Details  </strong></a></h3>
+<h3>DOMAIN DETAILS</h3>
+<div class="column">
+<div class="content b">
+<p><strong>CATEGORY!</strong> <p id="category"></p> </p>
+</div>
+ </div>
+
+</div>
+
+ -->
+
+<!-- END MAIN -->
+</div>
+</body>
+</html>
