@@ -1,42 +1,53 @@
-/*let pp = document.getElementsByTagName('p');
-for (elt of pp) {
-	elt.style['background-color'] = 'red';
-
-} */
-
-let iframes = document.getElementsByTagName('iframes');
-var num=0;
-for (elt of iframes) {
-	elt.style['display'] = 'none'; 
-	elt.innerHTML = 'Ad Blocked';
-	num=num+1;
-}console.log(num);
-
 chrome.runtime.sendMessage({
   from: 'content',
   subject: 'showPageAction',
 });
 
-// Listen for messages from the popup.
 chrome.runtime.onMessage.addListener((msg, sender, response) => {
-  // First, validate the message's structure.
   if ((msg.from === 'popup') && (msg.subject === 'DOMInfo')) {
-    // Collect the necessary data. 
-    // (For your specific requirements `document.querySelectorAll(...)`
-    //  should be equivalent to jquery's `$(...)`.)
-    var domInfo = {
-      total: document.querySelectorAll('*').length,
-      iframes: document.querySelectorAll('iframe').length,
+  var domInfo = {
+		total: document.querySelectorAll('*').length,
+    iframes: document.querySelectorAll('iframe').length,
 	  anch: document.querySelectorAll('a').length,
 	  meta: document.querySelectorAll('meta').length,
-	  script: document.querySelectorAll('script').length, 
+	  script: document.querySelectorAll('script').length,
 	  links: document.querySelectorAll('link').length,
 	  };
-
-    // Directly respond to the sender (popup), 
-    // through the specified callback.
     response(domInfo);
   }
+});
+chrome.runtime.sendMessage({
+  from: 'conts',
+  subject: 'showDetected',
+});
+chrome.runtime.onMessage.addListener((msg, sender, response) => {
+  var link_s="Links::: \n";
+  var link_s2="";
+  var script_s="Scripts::: \n";
+  var script_s2="";
+  if (msg.from === 'pops')
+  {
+    let links= document.getElementsByTagName('a');
+    for (elt of links){
+      link_s2=elt.href;
+      if(!link_s2.includes(msg.subject))
+        {
+          link_s=link_s+link_s2+"\n";
+
+        }
+    }
+      console.log(status);
+
+      let scripts= document.getElementsByTagName('scripts');
+      for (elt in scripts){
+        script_s2=elt.txt;
+        console.log(script_s2);
+      //  if(((script_s2.includes("https"))||(script_s2.includes("http")))&&(!script_s2.includes(msg.subject))){
+        //  script_s=script_s+script_s2+"\n"
+      //  }
 
 
+      }
+
+  }
 });
